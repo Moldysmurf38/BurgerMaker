@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/public/assets/css/burger_style.css" type="text/css" />
+    <title>Burger Eater!</title>
+    <script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
+<body>
+    {{{ body }}}
+</body>
+<script>
+    $(".create-burger").on("submit", function (event) {
+        event.preventDefault();
+        var newBurger = {
+            name: $("#burger-name").val().trim(),
+            devoured: 0
+        };
+
+        $.ajax("/", {
+            type: "POST",
+            data: newBurger
+        }).then(
+            function () {
+                console.log("created new burger");
+                // Reload the page to get the updated list
+                location.reload();
+            }
+        );
+    });
+
+    $(".eat-burger").on("click", function (event) {
+        var id = $(this).data("id");
+        var nowDevoured = {
+            devoured: true
+        };
+        $.ajax("/api/burgers/" + id, {
+            type: "PUT",
+            data: nowDevoured
+        }).then(
+            function () {
+                console.log("Burger has been eaten!");
+                location.reload();
+            }
+        );
+    })
+</script>
+
+</html>
