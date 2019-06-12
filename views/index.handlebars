@@ -1,3 +1,4 @@
+{{!--Adds the html required for the body located in main.handlebars--}}
 <div class="container">
 
   <h1>Burger Eater</h1>
@@ -7,8 +8,8 @@
   <div class="row">
     <div class="col-md-6">
       <h2>Created Burgers:</h2>
-
       <ul id="not-devoured">
+        {{!--Creates a location for burger-button.handlebars partials to be placed if the burger has a value of not devoured--}}
         {{#each burgers}}
         {{#unless devoured}}
         {{> burger-button devoured=false}}
@@ -19,6 +20,7 @@
     <div class="col-md-6">
       <h2>Burgers Eaten:</h2>
       <ul id="devoured">
+        {{!--Creates a location for burger-button.handlebars partials to be placed if the burger has a value of devoured--}}
         {{#each burgers}}
         {{#if devoured}}
         {{> burger-button devoured=true}}
@@ -30,6 +32,7 @@
 
   <h2>Make a Burger!</h2>
   <form class="create-burger">
+    {{!-- Creates a form for the user to submit their new burgers --}}
     <div class="form-group">
       <label for="burger-name">Burger Name:</label>
       <input type="text" id="burger-name" name="name">

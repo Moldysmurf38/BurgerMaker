@@ -1,5 +1,7 @@
+{{!-- Partial to be inserted into the index.handlebars for each burger in the table --}}
 <li>
     {{name}}
+    {{!-- If the burger has a value of devoured, then the Eat Me button is removed from the partial --}}
     {{#unless devoured}}
     <button class="eat-burger" data-id="{{id}}" data-devoured="{{devoured}}">
 		Eat Me!

@@ -1,16 +1,19 @@
+//Imports data from connection.js
 var connection = require("../config/connection")
 
+//Creates an array containing variables for a query
 function printMarks(num) {
-    var arr = [];
+    var arraySql = [];
 
     for (var i = 0; i < num; i++) {
-        arr.push("?");
+        arraySql.push("?");
     }
-    return arr.toString();
+    return arraySql.toString();
 }
 
+//Function that converts object into MySql format
 function objToSql(ob) {
-    var arr = [];
+    var arraySql = [];
 
     for (var key in ob) {
         var value = ob[key];
@@ -18,13 +21,15 @@ function objToSql(ob) {
             if (typeof value === "string" && value.indexOf(" ") >= 0) {
                 value = "'" + value + "'";
             }
-            arr.push(key + "=" + value);
+            arraySql.push(key + "=" + value);
         }
     }
-    return arr.toString();
+    return arraySql.toString();
 }
 
+//Creates an orm object filled with functions involving queries for MySQL table
 var orm = {
+    //Function query that finds and sends all data from the MySql table
     selectAll: function (tableIn, cb) {
         var queryString = "select * from " + tableIn;
         connection.query(queryString, function (err, result) {
@@ -33,27 +38,19 @@ var orm = {
             cb(result);
         })
     },
+    //Function query that adds a new burger with its data into the MySql table
     insertOne: function (table, col, val, cb) {
         var queryString = "insert into " + table;
-        queryString += " (";
-        queryString += col.toString();
-        queryString += ") ";
-        queryString += "VALUES (";
-        queryString += printMarks(val.length);
-        queryString += ") ";
+        queryString += " (" + col.toString() + ") " + "VALUES (" + printMarks(val.length) + ") ";
         connection.query(queryString, val, function (err, result) {
             if (err) throw err;
             cb(result);
         })
     },
-    updateOne: function (table, objVals, con, cb) {
+    //Function query that changes the devoured value of a burger in the MySql table
+    updateOne: function (table, obj, con, cb) {
         var queryString = "update " + table;
-
-        queryString += " SET ";
-        queryString += objToSql(objVals);
-        queryString += " WHERE ";
-        queryString += con;
-
+        queryString += " SET " + objToSql(obj) +" WHERE " + con;
         connection.query(queryString, function (err, result) {
             if (err) throw err;
             cb(result);
@@ -62,4 +59,5 @@ var orm = {
     }
 };
 
+//Exports the orm function object to burger.js
 module.exports = orm;

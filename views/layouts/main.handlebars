@@ -20,36 +20,35 @@
     {{{ body }}}
 </body>
 <script>
+    //Function that runs whenever the burger form is submitted
     $(".create-burger").on("submit", function (event) {
         event.preventDefault();
         var newBurger = {
             name: $("#burger-name").val().trim(),
             devoured: 0
         };
-
+        //Performs a post call to the database in order to add a new burger to the MySql table
         $.ajax("/", {
             type: "POST",
             data: newBurger
         }).then(
             function () {
-                console.log("created new burger");
-                // Reload the page to get the updated list
                 location.reload();
             }
         );
     });
-
+    //Function that runs whenever the Eat Me button is pressed on a burger
     $(".eat-burger").on("click", function (event) {
         var id = $(this).data("id");
         var nowDevoured = {
             devoured: true
         };
+        //Performs a put call to update the burger's devoured status
         $.ajax("/api/burgers/" + id, {
             type: "PUT",
             data: nowDevoured
         }).then(
             function () {
-                console.log("Burger has been eaten!");
                 location.reload();
             }
         );
