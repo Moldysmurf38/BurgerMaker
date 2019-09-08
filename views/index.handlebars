@@ -8,7 +8,7 @@
   <br>
   <div class="row">
     <div class="col-lg-12">
-      <img class="burger-stack-img" src="/assets/img/burger_maker.jpg">
+      <img class="img-fluid burger-stack-img" src="/assets/img/burger_maker.jpg">
     </div>
   </div>
   <br>
@@ -25,30 +25,29 @@
       </form>
     </div>
   </div>
-</div>
-<br>
-
-<div class="row justify-content-around">
-  <div class="col-4">
-    <h2>Created Burgers:</h2>
-    <ul id="not-devoured">
-      {{!--Creates a location for burger-button.handlebars partials to be placed if the burger has a value of not devoured--}}
-      {{#each burgers}}
-      {{#unless devoured}}
-      {{> burger-button devoured=false}}
-      {{/unless}}
-      {{/each}}
-    </ul>
-  </div>
-  <div class="col-4">
-    <h2>Burgers Eaten:</h2>
-    <ul id="devoured">
-      {{!--Creates a location for burger-button.handlebars partials to be placed if the burger has a value of devoured--}}
-      {{#each burgers}}
-      {{#if devoured}}
-      {{> burger-button devoured=true}}
-      {{/if}}
-      {{/each}}
-    </ul>
+  <br>
+  <div class="row justify-content-around">
+    <div class="col-4">
+      <h2>Created Burgers:</h2>
+      <ul id="not-devoured">
+        {{!--Creates a location for burger-button.handlebars partials to be placed if the burger has a value of not devoured--}}
+        {{#each burgers}}
+        {{#unless devoured}}
+        {{> burger-button devoured=false}}
+        {{/unless}}
+        {{/each}}
+      </ul>
+    </div>
+    <div class="col-4">
+      <h2>Burgers Eaten:</h2>
+      <ul id="devoured">
+        {{!--Creates a location for burger-button.handlebars partials to be placed if the burger has a value of devoured--}}
+        {{#each burgers}}
+        {{#if devoured}}
+        {{> burger-button devoured=true}}
+        {{/if}}
+        {{/each}}
+      </ul>
+    </div>
   </div>
 </div>
