@@ -29,6 +29,7 @@ h1 {
 
 h2 {
     text-align: center;
+    border-bottom: 2px solid rgb(255, 217, 91);
 }
 .create-burger {
     text-align: center;
