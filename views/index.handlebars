@@ -1,36 +1,37 @@
-{{!--Adds the html required for the body located in main.handlebars--}}
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-12">
       <h1>Burger Eater</h1>
     </div>
   </div>
   <br>
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-12">
       <img class="img-fluid burger-stack-img" src="/assets/img/burger_maker.jpg">
     </div>
   </div>
   <br>
   <div class="row">
-    <div class="col-lg-12">
-      <h2>Make a Burger!</h2>
-      <form class="create-burger">
-        {{!-- Creates a form for the user to submit their new burgers --}}
-        <div class="form-group">
-          <label for="burger-name">Burger Name:</label>
-          <input type="text" id="burger-name" name="name">
-        </div>
-        <button type="submit">Add Your Burger</button>
-      </form>
+    <div class="col-12">
+      <div class="burger-form">
+        <h2>Make a Burger!</h2>
+        <form class="create-burger">
+          <div class="form-group">
+            <label for="burger-name">Burger Name:</label>
+            <div class="d-inline-flex p-2">
+              <input type="text" id="burger-name" name="name">
+            </div>
+          </div>
+          <button type="submit">Add Your Burger</button>
+        </form>
+      </div>
     </div>
   </div>
   <br>
-  <div class="row justify-content-around">
+  <div class="row justify-content-around flex-shrink-1">
     <div class="col-4">
       <h2>Created Burgers:</h2>
       <ul id="not-devoured">
-        {{!--Creates a location for burger-button.handlebars partials to be placed if the burger has a value of not devoured--}}
         {{#each burgers}}
         {{#unless devoured}}
         {{> burger-button devoured=false}}
@@ -41,7 +42,6 @@
     <div class="col-4">
       <h2>Burgers Eaten:</h2>
       <ul id="devoured">
-        {{!--Creates a location for burger-button.handlebars partials to be placed if the burger has a value of devoured--}}
         {{#each burgers}}
         {{#if devoured}}
         {{> burger-button devoured=true}}
