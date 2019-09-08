@@ -1,6 +1,8 @@
-body {
-    margin-left: 40%;
-    margin-right: 40%;
-    background: rgb(123, 123, 253);
-    color: black;
+h1{
+    text-align: center;
+}
+.burger-stack-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

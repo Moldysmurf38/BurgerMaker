@@ -30,7 +30,8 @@ More extensive burger building
 MySQL: https://www.npmjs.com/package/mysql <br/>
 NPM Express: https://www.npmjs.com/package/express <br/>
 NPM Handlebars: https://www.npmjs.com/package/express-handlebars <br/>
-Heroku: https://www.heroku.com
+Heroku: https://www.heroku.com <br/>
+Main burger image: https://unsplash.com/@pablomerchanm
 
 ### **Author(s):**
 
